@@ -1,0 +1,306 @@
+/* ------ */
+/* RESET */
+/* ------ */
+
+@import 'vars.scss';
+
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+// body setup enhanced
+
+body {
+    background-color: $dark-clr;
+    font-family: $ff-sans-normal;
+    color: $white-clr;
+    font-size: $fs-400;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+// make images easier to work with
+
+img, picture {
+    max-width: 100%;
+    display: block;
+}
+
+// changed container
+
+.container {
+    padding-inline: 2em;
+    margin-inline: auto;
+    max-width: 80rem;
+}
+
+a, button {
+    transition: all .2s ease;
+}
+
+// TODO: change this later on
+
+h1, 
+h2,
+h3, 
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+// make form elements easier to work with 
+
+input, button, textarea, select {
+    font: inherit;
+} 
+
+ol, ul {
+    list-style: none;
+}
+
+// something new for me - for people who've turned them off in either their browser settings or in the os settings
+// !important are kind of bad practice, but in this case it's needed
+// better accessibility for people who have problems with animations
+
+@media (prefers-reduced-motion: reduce){
+    *, *:before, *:after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* --------------- */
+/* UTILITY CLASSES */
+/* ---------------- */
+
+/* general classes */
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.flow > *:where(:not(:first-child)) {
+    margin-top: 1rem;
+    
+}
+
+// screen reader only utility class
+// step forward for accessibility
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* color classes */
+
+.bg-dark {
+    background-color: $dark-clr;
+}
+
+.bg-light {
+    background-color: $light-clr;
+}
+
+.bg-white {
+    background-color: $white-clr;
+}
+
+.text-dark {
+    color: $dark-clr;
+}
+
+.text-light {
+    color: $light-clr;
+}
+
+.text-white {
+    color: $white-clr;
+}
+
+/* typography classes */ 
+
+.ff-serif {
+    font-family: $ff-serif;
+}
+
+.ff-sans-cond {
+    font-family: $ff-sans-cond;
+}
+
+.ff-sans-normal {
+    font-family: $ff-sans-normal;
+}
+
+.letter-spacing-1 {
+    letter-spacing: 4.75px;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2.7px;
+}
+
+.letter-spacing-3 {
+    letter-spacing: 2.35px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.fs-900 {
+    font-size: $fs-900;
+}
+
+.fs-800 {
+    font-size: $fs-800;
+}
+
+.fs-700 {
+    font-size: $fs-700;
+}
+
+.fs-600 {
+    font-size: $fs-600;
+}
+
+.fs-500 {
+    font-size: $fs-500;
+}
+
+.fs-400 {
+    font-size: $fs-400;
+}
+
+.fs-300 {
+    font-size: $fs-300;
+}
+
+.fs-200 {
+    font-size: $fs-200;
+}
+
+.fs-900,
+.fs-800,
+.fs-700,
+.fs-600 {
+    line-height: 1.1;
+}
+
+.numbered-title {
+    font-family: $ff-sans-cond;
+    font-size: $fs-500;
+    text-transform: uppercase;
+    letter-spacing: 4.72px;
+    span {
+        margin-right: .5em;
+        font-weight: 700;
+        color: hsl(230deg, 35%, 7% / 0.25);
+    }
+}
+
+/* ----------- */
+/* COMPONENTS */
+/* ----------- */
+
+.large-button {
+    display: grid;
+    padding: 0 2em;
+    aspect-ratio: 1;
+    z-index: 1;
+    text-decoration: none;
+    border-radius: 50%;
+    position: relative;
+    &:after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background-color: hsl(0°, 0%, 100% / 0.15);
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 500ms linear, transform 500ms ease-in-out;
+    }
+}
+
+.large-button:hover::after,
+.large-button:focus::after {
+    transform: scale(1.5);
+}
+
+.primary-navigation {
+    gap: 8rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    a {
+        text-decoration: none;
+        span {
+            font-weight: 700;
+            margin-right: .5em;
+        }
+    }
+}
+
+.underline-indicators > * {
+    cursor: pointer;
+    padding: 1rem 0;
+    border: 0;
+    border-bottom: .2rem solid hsl(0°, 0%, 100% / 0);
+}
+
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
+    color: hsl(0°, 0%, 100% / 1);
+    border-color: hsl(0°, 0%, 100% / 1);
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+    border-color: hsl(0°, 0%, 100% / 0.5);
+}
+
+.tab-list {
+    gap: 2rem;
+}
+
+.dot-indicators > * {
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    padding: .5em;
+    background-color: hsl(0°, 0%, 100% / .25);
+}
+
+.dot-indicators > *:hover,
+.dot-indicators > *:focus {
+    background-color: hsl(0°, 0%, 100% / .5);
+}
+
+.dot-indicators > [aria-selected="true"] {
+    color: hsl(0°, 0%, 100% / 1);
+    border-color: hsl(0°, 0%, 100% / 1);
+}
