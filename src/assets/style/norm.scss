@@ -15,16 +15,25 @@ html, body {
     height: 100%;
 }
 
-// body setup enhanced
+// body setup 
 
 body {
     background-color: $dark-clr;
     font-family: $ff-sans-normal;
     color: $white-clr;
-    font-size: $fs-400;
-    min-height: 100vh;
+    font-size: $fsm-400;
     line-height: 1.5;
 }
+
+.hidden {
+    overflow: hidden;
+}
+
+.home {
+    background-size: cover;
+    background-image: url(@/assets/images/home/background-home-mobile.jpg);
+}
+
 
 // make images easier to work with
 
@@ -41,19 +50,26 @@ img, picture {
     max-width: 80rem;
 }
 
+.grid-container {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height: calc(100vh - 130px);
+    row-gap: 2rem;
+    padding-inline: 2em;
+}
+
+.grid-container * {
+    max-width: 50ch;
+}
+
 a, button {
     transition: all .2s ease;
 }
 
 // TODO: change this later on
 
-h1, 
-h2,
-h3, 
-h4,
-h5,
-h6,
-p {
+h1, h2, h3, h4, h5, h6, p {
     font-weight: 400;
 }
 
@@ -86,6 +102,10 @@ ol, ul {
 
 /* general classes */
 
+.block {
+    display: block;
+}
+
 .flex {
     display: flex;
 }
@@ -96,7 +116,6 @@ ol, ul {
 
 .flow > *:where(:not(:first-child)) {
     margin-top: 1rem;
-    
 }
 
 // screen reader only utility class
@@ -170,35 +189,35 @@ ol, ul {
 }
 
 .fs-900 {
-    font-size: $fs-900;
+    font-size: $fsm-900;
 }
 
 .fs-800 {
-    font-size: $fs-800;
+    font-size: $fsm-800;
 }
 
 .fs-700 {
-    font-size: $fs-700;
+    font-size: $fsm-700;
 }
 
 .fs-600 {
-    font-size: $fs-600;
+    font-size: $fsm-600;
 }
 
 .fs-500 {
-    font-size: $fs-500;
+    font-size: $fsm-500;
 }
 
 .fs-400 {
-    font-size: $fs-400;
+    font-size: $fsm-400;
 }
 
 .fs-300 {
-    font-size: $fs-300;
+    font-size: $fsm-300;
 }
 
 .fs-200 {
-    font-size: $fs-200;
+    font-size: $fsm-200;
 }
 
 .fs-900,
@@ -210,13 +229,13 @@ ol, ul {
 
 .numbered-title {
     font-family: $ff-sans-cond;
-    font-size: $fs-500;
+    font-size: $fsm-500;
     text-transform: uppercase;
     letter-spacing: 4.72px;
     span {
         margin-right: .5em;
         font-weight: 700;
-        color: hsl(230deg, 35%, 7% / 0.25);
+        color: hsl(230deg, 35%, 7%, 0.25);
     }
 }
 
@@ -225,18 +244,20 @@ ol, ul {
 /* ----------- */
 
 .large-button {
-    display: grid;
-    padding: 0 2em;
-    aspect-ratio: 1;
-    z-index: 1;
-    text-decoration: none;
-    border-radius: 50%;
     position: relative;
+    z-index: 1;
+    display: inline-grid;
+    place-items: center;
+    font-size: 2rem;
+    padding: 0 2em;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    text-decoration: none;
     &:after {
         content: '';
         position: absolute;
         z-index: -1;
-        background-color: hsl(0°, 0%, 100% / 0.15);
+        background-color: hsl(0deg, 0%, 100%, 0.15);
         width: 100%;
         height: 100%;
         border-radius: 50%;
@@ -247,39 +268,25 @@ ol, ul {
 
 .large-button:hover::after,
 .large-button:focus::after {
-    transform: scale(1.5);
-}
-
-.primary-navigation {
-    gap: 8rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    a {
-        text-decoration: none;
-        span {
-            font-weight: 700;
-            margin-right: .5em;
-        }
-    }
+    opacity: 1;
+    transform: scale(1.3);
 }
 
 .underline-indicators > * {
     cursor: pointer;
-    padding: 1rem 0;
     border: 0;
-    border-bottom: .2rem solid hsl(0°, 0%, 100% / 0);
-}
-
-.underline-indicators > .active,
-.underline-indicators > [aria-selected="true"] {
-    color: hsl(0°, 0%, 100% / 1);
-    border-color: hsl(0°, 0%, 100% / 1);
+    border-bottom: .2rem solid hsl(0deg, 0%, 100%, 0);
 }
 
 .underline-indicators > *:hover,
 .underline-indicators > *:focus {
-    border-color: hsl(0°, 0%, 100% / 0.5);
+    border-color: hsl(0deg, 0%, 100%, 0.5);
+}
+
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
+    color: hsl(0deg, 0%, 100%, 1);
+    border-color: hsl(0deg, 0%, 100%, 1);
 }
 
 .tab-list {
@@ -292,15 +299,76 @@ ol, ul {
     border-radius: 50%;
     aspect-ratio: 1;
     padding: .5em;
-    background-color: hsl(0°, 0%, 100% / .25);
+    background-color: hsl(0deg, 0%, 100%, .25);
 }
 
 .dot-indicators > *:hover,
 .dot-indicators > *:focus {
-    background-color: hsl(0°, 0%, 100% / .5);
+    background-color: hsl(0deg, 0%, 100%, .5);
 }
 
 .dot-indicators > [aria-selected="true"] {
-    color: hsl(0°, 0%, 100% / 1);
-    border-color: hsl(0°, 0%, 100% / 1);
+    color: hsl(0deg, 0%, 100%, 1);
+    border-color: hsl(0deg, 0%, 100%, 1);
+}
+
+
+/* ------ */
+/* MEDIA QUERIES */
+/* ------ */
+
+// font size
+
+@media (min-width: 60em){
+    // grid container
+    .grid-container {
+        text-align: left;
+        column-gap: 2rem;
+        grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(2rem, 1fr);
+    }
+    .grid-container > *:first-child {
+        grid-column: 2;
+    }
+    .grid-container > *:last-child {
+        grid-column: 3;
+    }
+}
+
+
+@media (min-width: 50em){
+    body {
+        font-size: $fsd-400;
+    }
+    .fs-900 {
+        font-size: $fst-900;
+    }
+    .fs-800 {
+        font-size: $fsd-800;
+    }
+    .fs-700 {
+        font-size: $fsd-700;
+    }
+    .fs-600 {
+        font-size: $fsd-600;
+    }
+    .fs-400 {
+        font-size: $fsd-400;
+    }
+    .numbered-title {
+        font-size: $fsd-500;
+    }
+    .home {
+        background-position: top left;
+        background-image: url(@/assets/images/home/background-home-desktop.jpg);
+    }
+}
+
+@media (min-width: 35em) and (max-width: 50em){
+    .fs-400, body {
+        font-size: $fst-400;
+    }
+    .home {
+        background-position: center center;
+        background-image: url(@/assets/images/home/background-home-tablet.jpg);
+    }
 }

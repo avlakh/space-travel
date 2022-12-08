@@ -1,22 +1,42 @@
 // colors 
 
-$dark-clr: #0B0D17;
+$dark-clr: #0b0d17;
 $light-clr: #D0D6F9;
 $white-clr: #FFFFFF;
 
-// font-sizes
-
-$fs-900: 9.375rem;
-$fs-800: 6.25rem;
-$fs-700: 3.5rem;
-$fs-600: 2rem;
-$fs-500: 1.75rem;
-$fs-400: 1.125rem;
-$fs-300: 1rem;
-$fs-200: 0.875rem;
 
 // font-families
 
 $ff-serif: 'Bellefair', serif;
 $ff-sans-cond: 'Barlow Condensed', sans-serif;
 $ff-sans-normal: 'Barlow', sans-serif;
+
+// font-sizes
+// desktop
+
+$fsd-800: 6.25rem;
+$fsd-700: 3.5rem;
+$fsd-600: 2rem;
+$fsd-500: 1.75rem;
+$fsd-400: 1.125rem;
+$fsd-300: 1rem;
+$fsd-200: 0.875rem;
+
+// tablets
+
+$fst-900: 9.375rem;
+$fst-800: 5rem;
+$fst-700: 2.5rem;
+$fst-600: 1.5rem;
+$fst-400: 1rem;
+
+// mobile
+
+$fsm-900: 5rem;
+$fsm-800: 3.5rem;
+$fsm-700: 1.5rem;
+$fsm-600: 1rem;
+$fsm-500: 1.75rem;
+$fsm-400: 0.9375rem;
+$fsm-300: 1rem;
+$fsm-200: 0.875rem;
