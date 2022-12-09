@@ -23,6 +23,7 @@ body {
     color: $white-clr;
     font-size: $fsm-400;
     line-height: 1.5;
+    min-height: 100%;
 }
 
 .hidden {
@@ -32,6 +33,11 @@ body {
 .home {
     background-size: cover;
     background-image: url(@/assets/images/home/background-home-mobile.jpg);
+}
+
+.destination {
+    background-size: cover;
+    background-image: url(@/assets/images/destination/background-destination-mobile.jpg);
 }
 
 
@@ -54,7 +60,7 @@ img, picture {
     display: grid;
     place-items: center;
     text-align: center;
-    height: calc(100vh - 130px);
+    min-height: calc(100vh - 10.9rem);
     row-gap: 2rem;
     padding-inline: 2em;
 }
@@ -235,7 +241,7 @@ ol, ul {
     span {
         margin-right: .5em;
         font-weight: 700;
-        color: hsl(230deg, 35%, 7%, 0.25);
+        color: hsla(0, 0%, 100%, 0.25);
     }
 }
 
@@ -274,8 +280,10 @@ ol, ul {
 
 .underline-indicators > * {
     cursor: pointer;
+    padding: 1rem;
     border: 0;
     border-bottom: .2rem solid hsl(0deg, 0%, 100%, 0);
+    color: hsl(0deg, 0%, 100%, 1);
 }
 
 .underline-indicators > *:hover,
@@ -285,7 +293,6 @@ ol, ul {
 
 .underline-indicators > .active,
 .underline-indicators > [aria-selected="true"] {
-    color: hsl(0deg, 0%, 100%, 1);
     border-color: hsl(0deg, 0%, 100%, 1);
 }
 
@@ -326,19 +333,10 @@ ol, ul {
         column-gap: 2rem;
         grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(2rem, 1fr);
     }
-    .grid-container > *:first-child {
-        grid-column: 2;
-    }
-    .grid-container > *:last-child {
-        grid-column: 3;
-    }
 }
 
 
 @media (min-width: 50em){
-    body {
-        font-size: $fsd-400;
-    }
     .fs-900 {
         font-size: $fst-900;
     }
@@ -351,7 +349,10 @@ ol, ul {
     .fs-600 {
         font-size: $fsd-600;
     }
-    .fs-400 {
+    .fs-500 {
+        font-size: $fsd-500;
+    }
+    .fs-400, body {
         font-size: $fsd-400;
     }
     .numbered-title {
@@ -361,14 +362,25 @@ ol, ul {
         background-position: top left;
         background-image: url(@/assets/images/home/background-home-desktop.jpg);
     }
+    .destination {
+        background-position: top left;
+        background-image: url(@/assets/images/destination/background-destination-desktop.jpg);
+    }
 }
 
 @media (min-width: 35em) and (max-width: 50em){
+    .grid-container {
+        min-height: calc(100vh - 3rem);
+    }
     .fs-400, body {
         font-size: $fst-400;
     }
     .home {
         background-position: center center;
         background-image: url(@/assets/images/home/background-home-tablet.jpg);
+    }
+    .destination {
+        background-position: top left;
+        background-image: url(@/assets/images/destination/background-destination-tablet.jpg);
     }
 }

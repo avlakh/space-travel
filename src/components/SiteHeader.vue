@@ -3,13 +3,21 @@
         <div class="primary-logo">
             <img src="../assets/images/shared/logo.svg" alt="space tourism logo" class="logo">
         </div>
-        <button class="mobile-nav-toggle" aria-controls="primary-navigation" :aria-expanded="'false' ? isMobileMenuOpened : 'true'" @click="toggleMobileMenu"><span class="sr-only">Menu</span></button>
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation" :aria-expanded="'true' ? isMobileMenuOpened : 'false'" @click="toggleMobileMenu"><span class="sr-only">Menu</span></button>
         <nav>
             <ul :data-visible="'false' ? isMobileMenuOpened : 'true'" class="primary-navigation underline-indicators flex" :class="{'mob-nav-transform': isMobileMenuOpened}">
-                <li class="active"><router-link class="ff-sans-cond uppercase text-white letter-spacing-2" to="/" @click="toggleMobileMenu"><span aria-hidden="true">00</span>Home</router-link></li>
-                <li><router-link class="ff-sans-cond uppercase text-white letter-spacing-2" to="/destination" @click="toggleMobileMenu"><span aria-hidden="true">01</span>Destination</router-link></li>
-                <li><router-link class="ff-sans-cond uppercase text-white letter-spacing-2" to="/crew" @click="toggleMobileMenu"><span aria-hidden="true">02</span>Crew</router-link></li>
-                <li><router-link class="ff-sans-cond uppercase text-white letter-spacing-2" to="/technology" @click="toggleMobileMenu" aria-hidden="true"><span>03</span>Technology</router-link></li>
+                <li :class="{active: $route.path == '/'}">
+                    <router-link class="ff-sans-cond uppercase text-white letter-spacing-2" to="/" @click="toggleMobileMenu"><span aria-hidden="true">00</span>Home</router-link>
+                </li>
+                <li :class="{active: $route.path == '/destination'}">
+                    <router-link class="ff-sans-cond uppercase text-white letter-spacing-2" to="/destination" @click="toggleMobileMenu"><span aria-hidden="true">01</span>Destination</router-link>
+                </li>
+                <li :class="{active: $route.path == '/crew'}">
+                    <router-link class="ff-sans-cond uppercase text-white letter-spacing-2" to="/crew" @click="toggleMobileMenu" ><span aria-hidden="true">02</span>Crew</router-link>
+                </li>
+                <li :class="{active: $route.path == '/technology'}">
+                    <router-link class="ff-sans-cond uppercase text-white letter-spacing-2" to="/technology" @click="toggleMobileMenu" aria-hidden="true"><span>03</span>Technology</router-link>
+                </li>
             </ul>  
         </nav>
     </header>
@@ -25,13 +33,14 @@ export default {
             isMobileMenuOpened: false
         }
     },
-    mounted(){
-
-    },
     methods: {
         toggleMobileMenu(){
             this.isMobileMenuOpened = !this.isMobileMenuOpened;
-            document.querySelector('body').classList.toggle('hidden');
+            const el = document.querySelector('.mobile-nav-toggle');
+            const attr = el.getAttribute('aria-expanded');
+            if (window.innerWidth < 800) {
+                attr === 'false' ? document.body.classList.add('hidden') : document.body.classList.remove('hidden');
+            }
         }
     }
 }
@@ -39,17 +48,16 @@ export default {
 
 <style lang="scss" scoped>
 
-
 .primary-header {
-    padding: 25px;
+    padding: 2rem 4rem;
     align-items: center;
     justify-content: space-between;
 }
 
 .primary-navigation {
-    gap: 2rem;
+    gap: 1rem;
     list-style: none;
-    padding: 8px 30px;
+    padding: 8px 20px;
     margin: 0;
     background-color: hsl(230, 35%, 7%, 1);
     transition: transform 0.2s ease-in-out;
@@ -76,12 +84,6 @@ export default {
     }
 }
 
-@media (max-width: 70rem) {
-    .primary-navigation::after {
-        content: none;
-    }
-}
-
 // to perform a check whether browser supports it
 @supports (backdrop-filter: blur(1rem)) {
     .primary-navigation {
@@ -104,7 +106,16 @@ export default {
 
 /* media queries */
 
-@media (max-width: 40rem){
+@media (max-width: 90em) {
+    .primary-navigation::after {
+        content: none;
+    }
+}
+
+@media (max-width: 50em){
+    .primary-header {
+        padding: 2rem;
+    }
     .primary-navigation {
         gap: 2rem;
         list-style: none;

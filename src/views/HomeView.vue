@@ -11,26 +11,22 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      mounted(){
-        document.body.classList.add('home')
-      },
-      destroyed(){
-        document.body.classList.remove('home')
-      }
-      // https://renatello.com/vue-js-body-class/
-    }
-  }
-  // TODO: check backgrounds
-}
+
 </script>
 
 <style lang="scss" scoped>
-.grid-container--home {
-  padding-bottom: max(6rem, 20vh);
-  align-items: end;
+
+@media (min-width: 60em) {
+  .grid-container--home {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
+  }
+.grid-container--home > *:first-child {
+    grid-column: 2;
+}
+  .grid-container--home > *:last-child {
+    grid-column: 3;
+}
 }
 
 </style>

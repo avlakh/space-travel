@@ -1,13 +1,21 @@
 <template>
-    <SiteHeader/>
-    <RouterView/>
+    <div 
+        :class="{
+            home : $route.path == '/', 
+            destination: $route.path == '/destination',
+            crew: $route.path == '/crew',
+            active: $route.path == 'technology'
+            }">
+        <SiteHeader/>
+        <RouterView/>
+    </div>
 </template>
 
 <script>
 
 import SiteHeader from './components/SiteHeader.vue';
 
-    export default {
+export default {
     components: { 
         SiteHeader 
     }
