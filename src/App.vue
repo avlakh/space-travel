@@ -4,7 +4,7 @@
             home : $route.path == '/', 
             destination: $route.path == '/destination',
             crew: $route.path == '/crew',
-            active: $route.path == 'technology'
+            technology: $route.path == '/technology'
             }">
         <SiteHeader/>
         <RouterView/>

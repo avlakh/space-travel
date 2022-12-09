@@ -83,7 +83,6 @@ export default {
             .get('data.json')
             .then(resp => {
                 this.planetsArr = resp.data;
-                console.log(this.planetsArr)
             })
     }
 }
@@ -99,14 +98,13 @@ export default {
     'content';
 }
 
-.numbered-title {
-    grid-area: title;
-}
-
 .grid-container--destination {
+    .numbered-title {
+        grid-area: title;
+    }
     img {
-    grid-area: image;
-    max-width: 60%;
+        grid-area: image;
+        max-width: 60%;
     }
     .tab-list {
         grid-area: tabs;

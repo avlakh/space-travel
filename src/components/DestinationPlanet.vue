@@ -1,5 +1,5 @@
 <template>
-    <article class="destination-info">
+    <article class="destination-info flow">
         <h2 class="fs-800 uppercase ff-serif">{{name}}</h2>
         <p>{{description}}</p>
         <div class="destination-meta flex">
