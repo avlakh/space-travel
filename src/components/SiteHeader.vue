@@ -1,7 +1,9 @@
 <template>
     <header class="primary-header flex">
         <div class="primary-logo">
-            <img src="../assets/images/shared/logo.svg" alt="space tourism logo" class="logo">
+            <router-link to="/">
+                <img src="../assets/images/shared/logo.svg" alt="space tourism logo" class="logo">
+            </router-link>
         </div>
         <button class="mobile-nav-toggle" aria-controls="primary-navigation" :aria-expanded="'true' ? isMobileMenuOpened : 'false'" @click="toggleMobileMenu"><span class="sr-only">Menu</span></button>
         <nav>
@@ -82,6 +84,10 @@ export default {
             margin-right: .5em;
         }
     }
+}
+
+.primary-logo {
+    cursor: pointer;
 }
 
 // to perform a check whether browser supports it

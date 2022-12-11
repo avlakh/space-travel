@@ -79,7 +79,6 @@ export default {
             .get('data.json')
             .then(resp => {
                 this.peopleArr = resp.data;
-                console.log(this.peopleArr)
             })
     }
 }
