@@ -1,9 +1,9 @@
 <template>
-<article class="crew-info flow">
-    <h2 class="ff-serif uppercase">{{position}}</h2>
-    <p class="fs-700 uppercase ff-serif">{{name}}</p>
-    <p>{{description}}</p>
-</article>
+    <article class="crew-info flow">
+        <h2 class="ff-serif uppercase">{{position}}</h2>
+        <p class="fs-700 uppercase ff-serif">{{name}}</p>
+        <p>{{description}}</p>
+    </article>
 </template>
 
 <script>
@@ -26,6 +26,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
 </style>

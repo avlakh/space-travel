@@ -7,7 +7,11 @@
             technology: $route.path == '/technology'
             }">
         <SiteHeader/>
-        <RouterView/>
+        <RouterView v-slot="{Component}">
+            <Transition name="route" mode="out-in">
+                <component :is="Component"></component>
+            </Transition>
+        </RouterView>
     </div>
 </template>
 
@@ -24,5 +28,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.route-enter-active,
+.route-leave-active {
+  transition: opacity 0.5s ease;
+}
 
+.route-enter-from,
+.route-leave-to {
+  opacity: 0;
+}
 </style>

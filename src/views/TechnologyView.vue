@@ -42,9 +42,15 @@
             :description="item.description"
             />
         </template>
-        <img v-if="this.technologyName === 'vehicle'" src="../assets/images/technology/image-launch-vehicle-portrait.jpg" alt="launch vehicle"/>
-        <img v-if="this.technologyName === 'port'" src="../assets/images/technology/image-spaceport-portrait.jpg" alt="launch vehicle"/>
-        <img v-if="this.technologyName === 'capsule'" src="../assets/images/technology/image-space-capsule-portrait.jpg" alt="launch vehicle"/>
+        <Transition name="fade">
+            <img v-if="this.technologyName === 'vehicle'" src="../assets/images/technology/image-launch-vehicle-portrait.jpg" alt="launch vehicle"/>
+        </Transition>
+        <Transition name="fade">
+            <img v-if="this.technologyName === 'port'" src="../assets/images/technology/image-spaceport-portrait.jpg" alt="launch vehicle"/>
+        </Transition>
+        <Transition name="fade">
+            <img v-if="this.technologyName === 'capsule'" src="../assets/images/technology/image-space-capsule-portrait.jpg" alt="launch vehicle"/>
+        </Transition>
     </main>
 </template>
 
@@ -140,6 +146,16 @@ export default {
         justify-self: end;
         max-width: 90%;
     }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 </style>

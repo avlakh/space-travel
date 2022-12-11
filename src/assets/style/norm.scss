@@ -31,21 +31,25 @@ body {
 }
 
 .home {
+    transition: background-image 1s ease-in-out;
     background-size: cover;
     background-image: url(@/assets/images/home/background-home-mobile.jpg);
 }
 
 .destination {
+    transition: background-image 1s ease-in-out;
     background-size: cover;
     background-image: url(@/assets/images/destination/background-destination-mobile.jpg);
 }
 
 .crew {
+    transition: background-image 1s ease-in-out;
     background-size: cover;
     background-image: url(@/assets/images/crew/background-crew-mobile.jpg);
 }
 
 .technology {
+    transition: background-image 1s ease-in-out;
     background-size: cover;
     background-image: url(@/assets/images/technology/background-technology-mobile.jpg);
 }

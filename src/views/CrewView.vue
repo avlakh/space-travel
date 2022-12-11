@@ -20,9 +20,9 @@
                 <span class="sr-only">The crew engineer</span></button>
         </div>
         <template v-if="this.crewMem === 'com'" v-for="(item, i) in peopleArr.crew">
-            <CrewMember
+            <CrewMember 
                 :key="i"
-                v-if="(i === 0)"
+                v-if="(i === 0) && this.crewMem === 'com'"
                 :position="item.role"
                 :name="item.name"
                 :description="item.bio"/>
@@ -33,7 +33,11 @@
                 v-if="(i === 1)"
                 :position="item.role"
                 :name="item.name"
-                :description="item.bio"/>
+                :description="item.bio">
+                <Transition name="fade" mode="out-in">
+                    <component :is="this.crewMem === 'spec'"></component>
+                </Transition>
+            </CrewMember>
         </template>
         <template v-if="this.crewMem === 'pilot'" v-for="(item, i) in peopleArr.crew">
             <CrewMember
@@ -51,28 +55,34 @@
                 :name="item.name"
                 :description="item.bio"/>
         </template>
-        <img v-if="this.crewMem === 'com'" src="../assets/images/crew/image-douglas-hurley.png" alt="Douglas Harley"/>
-        <img v-if="this.crewMem === 'spec'" src="../assets/images/crew/image-mark-shuttleworth.png" alt="Mark Shuttleworth"/>
-        <img  v-if="this.crewMem === 'pilot'" src="../assets/images/crew/image-victor-glover.png" alt="Victor Glover"/>
-        <img  v-if="this.crewMem === 'engine'" src="../assets/images/crew/image-anousheh-ansari.png" alt="Anoushen Ansari"/>
+        <Transition name="fade">
+            <img v-if="this.crewMem === 'com'" src="../assets/images/crew/image-douglas-hurley.png" alt="Douglas Harley"/>
+        </Transition>
+        <Transition name="fade">
+            <img v-if="this.crewMem === 'spec'" src="../assets/images/crew/image-mark-shuttleworth.png" alt="Mark Shuttleworth"/>
+        </Transition>
+        <Transition name="fade">
+            <img v-if="this.crewMem === 'pilot'" src="../assets/images/crew/image-victor-glover.png" alt="Victor Glover"/>
+        </Transition>
+        <Transition name="fade">
+            <img v-if="this.crewMem === 'engine'" src="../assets/images/crew/image-anousheh-ansari.png" alt="Anoushen Ansari"/>
+        </Transition>
     </main>
 </template>
 
 <script>
 import axios from 'axios';
+import { Transition } from 'vue';
 import CrewMember from '../components/CrewMember.vue';
 export default {
     components: {
-        name: CrewMember
+        CrewMember
     },
     data() {
         return {
             crewMem: "com",
-            peopleArr: []
+            peopleArr: [],
         };
-    },
-    components: { 
-        CrewMember 
     },
     created() {
         axios
@@ -137,4 +147,15 @@ export default {
         justify-self: end;
     }
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 </style>

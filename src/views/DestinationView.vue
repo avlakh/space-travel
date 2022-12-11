@@ -1,11 +1,18 @@
 <template>
     <main class="grid-container grid-container--destination">
         <h1 class="numbered-title"><span aria-hidden="true">01</span>Pick your destination</h1>
-        <img v-if="this.planet === 'Moon'" src="../assets/images/destination/image-moon.png" alt="The Moon"/>
-        <img v-if="this.planet === 'Mars'" src="../assets/images/destination/image-mars.png" alt="Mars"/>
-        <img v-if="this.planet === 'Europa'" src="../assets/images/destination/image-europa.png" alt="Europa"/>
-        <img v-if="this.planet === 'Titan'" src="../assets/images/destination/image-titan.png" alt="The Moon"/>
-
+        <Transition name="fade">
+            <img v-if="this.planet === 'Moon'" src="../assets/images/destination/image-moon.png" alt="The Moon"/>
+        </Transition>
+        <Transition name="fade">
+            <img v-if="this.planet === 'Mars'" src="../assets/images/destination/image-mars.png" alt="Mars"/>
+        </Transition>
+        <Transition name="fade">
+            <img v-if="this.planet === 'Europa'" src="../assets/images/destination/image-europa.png" alt="Europa"/>
+        </Transition>
+        <Transition name="fade">
+            <img v-if="this.planet === 'Titan'" src="../assets/images/destination/image-titan.png" alt="The Moon"/>
+        </Transition>
         <div class="tab-list underline-indicators flex">
             <button 
                 :aria-selected="true ? this.planet == 'Moon' : false" 
@@ -132,6 +139,16 @@ export default {
     .grid-container--destination img {
         max-width: 90%;
     }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 </style>
