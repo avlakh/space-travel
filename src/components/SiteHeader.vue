@@ -5,7 +5,7 @@
                 <img src="../assets/images/shared/logo.svg" alt="space tourism logo" class="logo">
             </router-link>
         </div>
-        <button class="mobile-nav-toggle" aria-controls="primary-navigation" :aria-expanded="'true' ? isMobileMenuOpened : 'false'" @click="toggleMobileMenu"><span class="sr-only">Menu</span></button>
+        <button class="mobile-nav-toggle" :aria-expanded="'true' ? isMobileMenuOpened : 'false'" @click="toggleMobileMenu"><span class="sr-only">Menu</span></button>
         <nav>
             <ul :data-visible="'false' ? isMobileMenuOpened : 'true'" class="primary-navigation underline-indicators flex" :class="{'mob-nav-transform': isMobileMenuOpened}">
                 <li :class="{active: $route.path == '/'}">
