@@ -1,29 +1,9 @@
-# space-travel
+Hey!
 
-This template should help get you started developing with Vue 3 in Vite.
+This project is part of 'Frontend Mentor' challenge. Solution to my project could be found here: https://www.frontendmentor.io/solutions/space-tourism-multipage-website-XOcNwD2ZYd
 
-## Recommended IDE Setup
+I was inspired by YouTube CSS guru Kevin Powell that covered this challenge in one of his videos. I decided to improve this project by having it run as Vue application. Also, this was the first time I used mobile-first approach which was exciting!
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+As mentioned, application is powered by Vue3 framework. Also, I used Vue transition, router and dynamic component taking the data from the provided json file.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+Let me know if something could be improved. Cheers!
